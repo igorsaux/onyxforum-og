@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body,
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial';
+            margin: 0;
+        }
+
+        #og {
+            width: 1200px;
+            height: 630px;
+            color: black;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+
+        .ProductName {
+            color: dimgrey;
+            font-size: 2em;
+            padding: 15px;
+            margin: 0;
+        }
+
+        .Header {
+            display: flex;
+            margin: auto;
+            align-items: flex-start;
+        }
+
+        .Title {
+            padding: 15px;
+            font-size: 6em;
+            margin: auto;
+        }
+
+        .Footer {
+            display: flex;
+            align-items: center;
+            background-color: #171821;
+        }
+
+        .Rating {
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+            width: 120px;
+            text-align: center;
+        }
+
+        .RatingGreen {
+            color: #11d011;
+        }
+
+        .RatingRed {
+            color: #d01111;
+        }
+
+        .Author {
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: #cf374d;
+            color: white;
+
+            flex-grow: 1;
+        }
+
+        .Name {
+            font-size: 4em;
+        }
+    </style>
+    <div id="og">
+        <h3 class="ProductName">OnyxForum</h3>
+        <div class="Header">
+            <h2 class="Title">{{ .Title }}</h2>
+        </div>
+
+        <div class="Footer">
+            <div class="Author">
+                <img class="Avatar" src="{{ .User.AvatarUrl }}" alt="" class="Avatar">
+                <b class="Name">{{ .User.Name }}</b>
+            </div>
+            {{ if (gt .Rating 0)}}
+            <span class="Rating RatingGreen">{{ .Rating }}</span>
+            {{ else if (lt .Rating 0)}}
+            <span class="Rating RatingRed">{{ .Rating }}</span>
+            {{ else }}
+            <span class="Rating">{{ .Rating }}</span>
+            {{ end }}
+        </div>
+    </div>
+</body>
+
+</html>
